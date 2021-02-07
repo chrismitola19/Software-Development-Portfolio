@@ -1,0 +1,80 @@
+
+        /*
+        =====================================
+        General
+        =====================================
+        */
+
+        body {
+            width: 95%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        hr {
+            border: 1px solid red;
+        }
+
+        h3 {
+            margin-bottom: .2em;
+        }
+
+        /*
+        =====================================
+        Layout
+        =====================================
+        */
+
+        .row {
+            margin: auto;
+        }
+
+        .col {
+            margin: auto;
+            padding: .3em;
+        }
+
+        .itemBox {
+            margin: 1em;
+            border: 2px solid black;
+        }
+
+        .itemBoxRow {
+            padding: .4em;
+            display: block;
+        }
+
+        .number {
+            height: .1em;
+            padding-top: 0;
+            text-align: left;
+        }
+
+        .quantity {
+            margin-top: 1em;
+        }
+
+        /* 
+        ===================================
+        Forms 
+        ==================================
+        */
+
+        label {
+            font-size: 175%;
+        }
+
+        input,
+        button {
+            width: 90%;
+            margin: 0 auto;
+            padding: .2em;
+            display: block;
+            text-align: center;
+        }
+
+        input {
+            font-size: 120%;
+        }
+
+    

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Field-Agent</title>
+  </head>
+  <body>
+      
+      <div class="container">
+
+            <h3 class="margin-bottom">Add a Field Agent</h3>
+           <form th:object="${agent}" action="addAgent" method="POST" class="form">
+            
+
+              <div class="col-12 m-1 text-center" 
+                    th:if="${!errors.isEmpty()}">
+                    <p class="alert alert-danger" th:each="error : ${errors}" 
+                    th:text="${error.message}">Error message</p>
+               </div>
+
+              <div class="col-12 m-1 text-center" 
+                    th:if="${!stringError.isEmpty()}">
+                    <p class="alert alert-danger" th:each="error : ${stringError}" 
+                    th:text="${error}">Error message</p>
+               </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="firstName">First Name</label>
+                        <input th:field="*{firstName}" class="form-control"  type="text" id="firstName" name="first_name" >
+                        
+                      
+
+                        
+                    </div>
+                    <div class="form-group col">
+                        <label for="middleName">Middle Name</label>
+                        <input th:field="*{middleName}" class="form-control" type="text" id="middleName" name="middle_name">
+                    </div>
+                    <div class="form-group col">
+                        <label for="lastName">Last Name</label>
+                        <input th:field="*{lastName}" class="form-control" type="text" id="lastName" name="last_name">
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="birthDate">Birth Date</label>
+                        <input th:field="*{birthDate}" class="form-control" type="date" id="birthDate" name="birth_date" min="1900-01-01" max="2010-02-05">
+
+                    </div>
+                    <div class="form-group col">
+                        <label for="height">Height</label>
+                        <input th:field="*{height}" class="form-control" type="number" id="height" name="height" >
+                    </div>
+                </div>
+
+                <fieldset>
+                    <legend>Agency</legend>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="identifier">Identifier</label>
+                            <input th:field="*{identifier}" class="form-control" type="text" id="identifier" name="identifier">
+                            <div class="invalid-feedback">
+                            Id already in use.
+                        </div>
+                        </div>
+                        <div class="form-group col">
+                            <label for="agency">Agency</label>
+                            <select th:field="*{agency}" class="form-control" type="text" id="agency" name="agency_id">
+                               
+                                  <option th:each="agency : ${agencies}" 
+                                            th:value="${agency.agencyId}" 
+                                            th:text="${agency.name}" >
+
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="securityClearance">Security Clearance</label>
+                            <select  th:field="*{securityClearance}" class="form-control" type="text" id="securityClearance" name="security_clearance_id">
+                                
+                              
+                                    <option th:each="securityClearance : ${securities}" 
+                                            th:value="${securityClearance.securityClearanceId}" 
+                                            th:text="${securityClearance.name}" >
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="activationDate">Activation Date</label>
+                            <input th:field="*{activationDate}" class="form-control" type="date" id="activationDate" name="activation_date">
+                        </div>
+
+                        <div class="form-group col align-self-end">
+                            <div class="form-check">
+                                <input  type="checkbox" class="form-check-input" id="isActive" name="is_active" th:field="*{Active}"  checked>
+                                <label class="form-check-label" for="isActive">Is Active</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="pictureUrl">Picture Url</label>
+                    <input th:field="*{pictureUrl}" class="form-control" type="url" id="pictureUrl" name="picture_url">
+                </div>
+
+             
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="home" class="btn btn-secondary">Cancel</a>
+            </form>
+
+        </div>
+  
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>; 
+

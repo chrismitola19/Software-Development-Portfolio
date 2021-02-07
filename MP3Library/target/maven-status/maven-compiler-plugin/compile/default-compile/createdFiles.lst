@@ -1,0 +1,9 @@
+com\cm\mp3library\ui\MP3View.class
+com\cm\mp3library\ui\UserIO.class
+com\cm\mp3library\dao\MP3Dao.class
+com\cm\mp3library\controller\MP3Controller.class
+com\cm\mp3library\dto\MP3.class
+com\cm\mp3library\dao\MP3DaoException.class
+com\cm\mp3library\dao\MP3DaoFileImpl.class
+com\cm\mp3library\ui\UserIOConsoleImpl.class
+com\cm\mp3library\App.class

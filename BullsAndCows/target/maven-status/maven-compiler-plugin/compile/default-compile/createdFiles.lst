@@ -1,0 +1,12 @@
+com\cm\bullsandcows\App.class
+com\cm\bullsandcows\dao\BCDao.class
+com\cm\bullsandcows\service\BCService.class
+com\cm\bullsandcows\service\BCServiceImpl.class
+com\cm\bullsandcows\model\Game.class
+com\cm\bullsandcows\service\Error.class
+com\cm\bullsandcows\controllers\BCController.class
+com\cm\bullsandcows\model\Round.class
+com\cm\bullsandcows\TestApplicationConfiguration.class
+com\cm\bullsandcows\dao\BCDaoImpl$gameMapper.class
+com\cm\bullsandcows\dao\BCDaoImpl$roundMapper.class
+com\cm\bullsandcows\dao\BCDaoImpl.class
