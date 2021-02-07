@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>   
+ 
+         
+         <title>Batter Up!</title>
+    </head>
+    <body>
+        
+        <style>
+            
+            h1 {
+                text-align: center;
+                font-size: 50px;
+                margin-top: 50px;
+                outline-style: solid;
+                outline-color: gray;
+                background-color: snow;
+               
+               
+              
+            }
+            
+            h2 {
+                text-align: center;
+                margin-top: 20px;
+                color: gray;
+                text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+            }
+            
+            table {
+                text-align: center;
+                width: 30%;
+                margin-top: 20px;
+    
+            }
+            
+            body {
+                background-color: #F5F5F5;
+            }
+            
+        </style>
+        
+
+
+        
+         <div ng-app="" ng-init="title = 'Batter Up!'">
+
+            <h1><a href="home"><span ng-bind="title" href="/home" style="color:navy;"></span></a></h1>
+
+        </div>
+         
+        <div class="text-center" style="font-size: 30px; margin-top: 20px; text-shadow: 1px 1px silver;">
+        <tr th:each="team: ${teams}">
+                <td th:text="${team.teamname}"></td>
+            </tr>
+        </div>
+                <h2><a>Batting Order</a></h2> 
+                 
+            
+            <table align="center">
+                <thead>
+                    <tr>
+                      
+                       
+                        <th>Player Name</th>
+                        <th>Batting Position Rank</th>
+                        <th>&nbsp;</th>
+                    
+                    </tr>
+                </thead>
+                
+                
+                <tbody>
+                   
+                  <tr th:each="player : ${players}">
+                           
+                               <td th:text="${player.firstname + ' ' + player.lastname}">Name</td>
+                               <td th:text="${#numbers.formatDecimal(player.battingposition, 0, 3)}">Batting Position Rank</td>  
+                         
+                 
+                  </tr>
+                </tbody>
+                
+                
+            </table>    
+             
+         <!--</div>-->
+       
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   
+    
+    
+    </body>
+</html>

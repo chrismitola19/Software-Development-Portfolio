@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <title>Batter Up!</title>
+    </head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+    <style>
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+
+
+        }
+
+        .container {
+            margin-top: 30px;
+            background-color: lightgray;
+            outline-style: solid;
+        }
+
+        body {
+            background-image: url(https://cdn.pixabay.com/photo/2018/10/20/14/57/ball-3760961__340.jpg);
+        }
+
+
+
+    </style>
+
+
+
+
+    <body>
+
+        <div class="container">
+
+            <div ng-app="" ng-init="title = 'Batter Up!'">
+
+                <h1><a href="home"><span ng-bind="title" href="/home" style="color:navy;"></span></a></h1>
+
+            </div>
+
+            <h3 class="margin-bottom">Add A New Player</h3>
+            <form action="addPlayer" method="POST" class="form">
+
+                <div class="col-12 m-1 text-center" 
+                     th:if="${!errs.isEmpty()}">
+                    <p class="alert alert-danger" th:each="error : ${errs}" 
+                       th:text="${error.message}">Error message</p>
+                </div>
+
+                <div class="col-12 m-1 text-center" 
+                     th:if="${!stringError.isEmpty()}">
+                    <p class="alert alert-danger" th:each="error : ${stringError}" 
+                       th:text="${error}">Error message</p>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-4" for="team">Team Name</label>
+                    <select class="col-8" name="team" id="team" type="text">
+                        <option th:each="team : ${teams}"
+                                th:value="${team.teamid}"
+                                th:text="${team.teamname}"
+                                >teams    </option>
+                    </select>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="firstname">First Name</label>
+                        <input class="form-control"  type="text" id="firstname" name="firstname" >
+
+                    </div>
+
+
+                    <div class="form-group col">
+                        <label for="lastname">Last Name</label>
+                        <input class="form-control" type="text" id="lastname" name="lastname">
+
+                    </div>
+
+                </div>
+                <hr />
+
+                <h3>Player Stats</h3>
+
+
+                <div class="form-row">
+                    <div class="form-group col-4">
+                        <label for="atbats">At Bats</label>
+                        <input class="form-control" type="number" id="atbats" name="atbats" value="1">
+
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="hits">Hits</label>
+                        <input class="form-control" type="number" id="hits" name="hits" value="0">
+                    </div>
+
+
+                    <div class="form-group col-4">
+                        <label for="runs">Runs</label>
+                        <input class="form-control" type="number" id="runs" name="runs" value="0">
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="form-row">
+                    <div class="form-group col-3">
+                        <label for="singles">Singles</label>
+                        <input class="form-control" type="number" id="singles" name="singles" value="0">
+
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="doubles">Doubles</label>
+                        <input class="form-control" type="number" id="doubles" name="doubles" value="0">
+                    </div>
+
+
+                    <div class="form-group col-3">
+                        <label for="triples">Triples</label>
+                        <input class="form-control" type="number" id="triples" name="triples" value="0">
+                    </div>
+
+                    <div class="form-group col-3">
+                        <label for="homeruns">Home Runs</label>
+                        <input class="form-control" type="number" id="homeruns" name="homeruns" value="0">
+                    </div>  
+
+                </div>
+
+                <hr />
+
+                <div class="form-row">
+                    <div class="form-group col-3">
+                        <label for="walks">Walks</label>
+                        <input class="form-control" type="number" id="walks" name="walks" value="0">
+
+                    </div>
+                    <div class="form-group col-3">
+                        <label for="sacfly">Sacrifice Flys</label>
+                        <input class="form-control" type="number" id="sacfly" name="sacfly" value="0">
+                    </div>
+
+
+                    <div class="form-group col-3">
+                        <label for="sacbunt">Sacrifice Bunts</label>
+                        <input class="form-control" type="number" id="sacbunt" name="sacbunt" value="0" >
+                    </div>
+
+                    <div class="form-group col-3">
+                        <label for="stolenbase">Stolen Bases</label>
+                        <input class="form-control" type="number" id="stolenbase" name="stolenbase" value="0">
+                    </div>  
+
+
+
+
+
+                </div>
+
+                <hr />
+
+                <div class="form-group col-12" align="center">
+                    <button type="submit" class="btn btn-primary" 
+                            style="background-color: navy; color: lightgray; margin-bottom: 20px; padding-right: 40px;
+                            padding-left: 40px; font-size: 20px;" >Add Player</button>
+                    <a href="home" type="submit" class="btn btn-primary" 
+                       style="background-color: navy; color: lightgray; margin-bottom: 20px; padding-right: 50px;
+                       padding-left: 50px; font-size: 20px;" >Cancel</a>
+                </div>
+            </form>   
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html> 
+

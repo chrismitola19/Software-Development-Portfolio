@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Batter Up!</title>
+
+	<style>
+
+            body {
+              height: 100%;
+            }
+            body {
+                background-color: #F5F5F5;
+/*              font-family: 'Open Sans';*/
+/*              font-weight: 100;*/
+                display: flex;
+/*              overflow: hidden;*/
+            }
+
+            .login-form {
+              background: silver;
+              outline-style: solid;
+/*              box-shadow: 0 0 1rem rgba(0,0,0,0.3);*/
+              min-height: 300px;
+              min-width: 500px;
+/*              margin: auto;*/
+/*              max-width: 50%;*/
+              padding-top: 50px;
+              align-content: center; 
+              margin: auto;
+              margin-top: 125px;
+              
+            }
+
+            .login-submit {
+              border: 1px solid white;
+/*              background: transparent;*/
+              color: black;
+              display: block;
+              margin: 1rem auto;
+              min-width: 125px;
+              padding: 7px;
+              
+/*              transition: 250ms background ease-in;
+              &:hover, &:focus {
+                background: white;
+                color: black;
+                transition: 250ms background ease-in;*/
+              /*}*/
+            }
+
+    </style>
+</head>
+<body>
+    
+    
+    <form class="login-form" th:action="@{/login}" method="post">
+
+        <div class="container">
+            <h1 style="text-align: center; font-size: 50px; color: navy; text-shadow: 2px 2px snow;">Batter Up!</h1>
+                <div class="form__field">
+                    <label for="login__username"><span class="hidden"></span></label>
+                    <input id="login__username" type="text" name="username" class="login-submit" size="25px" placeholder="Username" required>
+                </div>
+                <div class="form__field center">
+                    <label for="password"><span class="hidden"></span></label>
+                    <input id="login__password" type="password" name="password" class="login-submit" size="25px" placeholder="Password" required>
+                </div>
+    <input class="login-submit" type="submit" value="Sign In"  />
+    <div align="center" th:if="${param.error}">
+        <font color="navy" size="5px">
+            Invalid user information.
+        </font>
+    </div>
+    <div align="center" th:if="${param.logout}">
+        <font color="navy" size="5px">
+            You have been logged out.
+        </font>
+    </div>
+  
+
+            </div>
+</form>
+    </body>
+</html>
+
+
+
+
+
+
